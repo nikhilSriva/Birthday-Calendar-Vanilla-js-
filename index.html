@@ -6,12 +6,29 @@
     <title>Birthday Calendar</title>
 </head>
 <script src="index.js">
-
 </script>
 
 <body onload="init()">
 <div id="root" style="width: 100%;height: 100%;background-color: #ebf0f2">
-    <div id="container" style="flex-direction: row;display: flex;justify-content: space-around"/>
+    <div style="padding: 15px 0">
+        <h2 style="text-align: center;color: #5d6a76;font-weight: 300;font-size: 30px;padding-bottom: 20px">Birthday
+            Cal</h2>
+        <div id="container" style="flex-direction: row;display: flex;justify-content: space-around">
+        </div>
+        <div style="display: flex;justify-content: space-between;padding:50px 16px">
+        <textarea id="textAreaId" onchange="onChangeTextArea(this.value)" value="" class="textArea"
+                  style="width:55%;height: 350px">
+            </textarea>
+            <div style="padding:0 40px;flex:1;display: flex;flex-direction: column">
+                <label style="color: #5d6a76;font-weight: 400;font-size: 18px">
+                    Year
+                </label>
+                <input class="yearInput" onchange="onChangeInput(this.value)" value=""/>
+                <button class="updateButton" onclick="updateUi()">UPDATE</button>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 </body>
 </html>

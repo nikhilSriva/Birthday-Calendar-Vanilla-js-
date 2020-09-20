@@ -16,174 +16,176 @@ const WEEK_DAYS_MAPPING = {
     5: 'FRI',
     6: 'SAT'
 };
-const JSON = [
+const dummyData = [
     {
-        name: "Tyrion Lannister",
-        birthday: "12/08/1978"
+        "name": "Tyrion Lannister",
+        "birthday": "12/08/1978"
     },
     {
-        name: "Tyriaaon Lannister",
-        birthday: "09/20/2020"
+        "name": "Tyriaaon Lannister",
+        "birthday": "09/20/2020"
     },
     {
-        name: "Tyriaaon Lannister",
-        birthday: "09/20/2020"
+        "name": "Tyriaaon Lannister",
+        "birthday": "09/20/2020"
     }, {
-        name: "Tyriaaon Lannister",
-        birthday: "09/20/2020"
+        "name": "Tyriaaon Lannister",
+        "birthday": "09/20/2020"
     }, {
-        name: "Tyriaaon Lannister",
-        birthday: "09/20/2020"
+        "name": "Tyriaaon Lannister",
+        "birthday": "09/20/2020"
     },
     {
-        name: "Tyriaaon Lannister",
-        birthday: "09/20/2020"
+        "name": "Tyriaaon Lannister",
+        "birthday": "09/20/2020"
     },
     {
-        name: "Tyriaaon Lannister",
-        birthday: "09/20/2020"
+        "name": "Tyriaaon Lannister",
+        "birthday": "09/20/2020"
     }, {
-        name: "Tyriaaon Lannister",
-        birthday: "09/20/2020"
+        "name": "Tyriaaon Lannister",
+        "birthday": "09/20/2020"
     }, {
-        name: "Tyriaaon Lannister",
-        birthday: "09/20/2020"
+        "name": "Tyriaaon Lannister",
+        "birthday": "09/20/2020"
     }, {
-        name: "Tyriaaon Lannister",
-        birthday: "09/20/2020"
+        "name": "Tyriaaon Lannister",
+        "birthday": "09/20/2020"
     }, {
-        name: "Tyriaaon Lannister",
-        birthday: "09/20/2020"
+        "name": "Tyriaaon Lannister",
+        "birthday": "09/20/2020"
     }, {
-        name: "Tyriaaon Lannister",
-        birthday: "09/20/2020"
+        "name": "Tyriaaon Lannister",
+        "birthday": "09/20/2020"
     },
     {
-        name: "Tyriaaon Lannister",
-        birthday: "09/20/2020"
+        "name": "Tyriaaon Lannister",
+        "birthday": "09/20/2020"
     }, {
-        name: "Tyriaaon Lannister",
-        birthday: "09/20/2020"
+        "name": "Tyriaaon Lannister",
+        "birthday": "09/20/2020"
     },
     {
-        name: "Lala Lannister",
-        birthday: "09/25/2020"
+        "name": "Lala Lannister",
+        "birthday": "09/25/2020"
     },
     {
-        name: "Cersei Lannister",
-        birthday: "11/30/1975"
+        "name": "Cersei Lannister",
+        "birthday": "11/30/1975"
     },
     {
-        name: "Daenerys Targaryen",
-        birthday: "11/24/1991"
+        "name": "Daenerys Targaryen",
+        "birthday": "11/24/1991"
     },
     {
-        name: "Arya Stark",
-        birthday: "11/25/1996"
+        "name": "Arya Stark",
+        "birthday": "11/25/1996"
     },
     {
-        name: "Jon Snow",
-        birthday: "12/03/1989"
+        "name": "Jon Snow",
+        "birthday": "12/03/1989"
     },
     {
-        name: "Sansa Stark",
-        birthday: "15/08/1992"
+        "name": "Sansa Stark",
+        "birthday": "15/08/1992"
     },
     {
-        name: "Jorah Mormont",
-        birthday: "12/16/1968"
+        "name": "Jorah Mormont",
+        "birthday": "12/16/1968"
     },
     {
-        name: "Jaime Lannister",
-        birthday: "12/06/1975"
+        "name": "Jaime Lannister",
+        "birthday": "12/06/1975"
     },
     {
-        name: "Sandor Clegane",
-        birthday: "11/07/1969"
+        "name": "Sandor Clegane",
+        "birthday": "11/07/1969"
     },
     {
-        name: "Tywin Lannister",
-        birthday: "10/12/1951"
+        "name": "Tywin Lannister",
+        "birthday": "10/12/1951"
     },
     {
-        name: "Theon Greyjoy",
-        birthday: "12/31/1989"
+        "name": "Theon Greyjoy",
+        "birthday": "12/31/1989"
     },
     {
-        name: "Samwell Tarly",
-        birthday: "12/07/1990"
+        "name": "Samwell Tarly",
+        "birthday": "12/07/1990"
     },
     {
-        name: "Joffrey Baratheon",
-        birthday: "06/12/1992"
+        "name": "Joffrey Baratheon",
+        "birthday": "06/12/1992"
     },
     {
-        name: "Catelyn Stark",
-        birthday: "12/03/1962"
+        "name": "Catelyn Stark",
+        "birthday": "12/03/1962"
     },
     {
-        name: "Bran Stark",
-        birthday: "12/02/1995"
+        "name": "Bran Stark",
+        "birthday": "12/02/1995"
     },
     {
-        name: "Petyr Baelish",
-        birthday: "11/20/1974"
+        "name": "Petyr Baelish",
+        "birthday": "11/20/1974"
     },
     {
-        name: "Robb Stark",
-        birthday: "11/28/1986"
+        "name": "Robb Stark",
+        "birthday": "11/28/1986"
     },
     {
-        name: "Brienne of Tarth",
-        birthday: "11/27/1985"
+        "name": "Brienne of Tarth",
+        "birthday": "11/27/1985"
     },
     {
-        name: "Margaery Tyrell",
-        birthday: "12/02/1989"
+        "name": "Margaery Tyrell",
+        "birthday": "12/02/1989"
     },
     {
-        name: "Stannis Baratheon",
-        birthday: "09/14/1971"
+        "name": "Stannis Baratheon",
+        "birthday": "09/14/1971"
     },
     {
-        name: "Davos Seaworth",
-        birthday: "02/13/1973"
+        "name": "Davos Seaworth",
+        "birthday": "02/13/1973"
     },
     {
-        name: "Tormund Giantsbane",
-        birthday: "12/14/1974"
+        "name": "Tormund Giantsbane",
+        "birthday": "12/14/1974"
     },
     {
-        name: "Jeor Mormont",
-        birthday: "11/01/1955"
+        "name": "Jeor Mormont",
+        "birthday": "11/01/1955"
     },
     {
-        name: "Eddard Stark",
-        birthday: "12/02/1963"
+        "name": "Eddard Stark",
+        "birthday": "12/02/1963"
     },
     {
-        name: "Khal Drogo",
-        birthday: "12/05/1980"
+        "name": "Khal Drogo",
+        "birthday": "12/05/1980"
     },
     {
-        name: "Ramsay Bolton",
-        birthday: "12/05/1976"
+        "name": "Ramsay Bolton",
+        "birthday": "12/05/1976"
     },
     {
-        name: "Robert Baratheon",
-        birthday: "12/02/1965"
+        "name": "Robert Baratheon",
+        "birthday": "12/02/1965"
     },
     {
-        name: "Daario Naharis",
-        birthday: "12/02/1985"
+        "name": "Daario Naharis",
+        "birthday": "12/02/1985"
     },
     {
-        name: "Viserys Targaryen",
-        birthday: "12/06/1984"
+        "name": "Viserys Targaryen",
+        "birthday": "12/06/1984"
     }
 ]
+let JSON_DATA = null,
+    year = null;
 
- function init() {
+function init(data) {
     WEEK_DAYS.map((item, index) => {
         let div = document.createElement("div");
         div.setAttribute("style", "flex-basis:12%");
@@ -199,6 +201,7 @@ const JSON = [
         innerDiv.appendChild(headingDiv);
 
         let textContainer = document.createElement("h3");
+        textContainer.setAttribute('class', 'headerText')
         let text = document.createTextNode(item);
         textContainer.appendChild(text);
         textContainer.style.color = '#dfdbf9';
@@ -211,25 +214,33 @@ const JSON = [
         birthdayContent.setAttribute('id', item.toLowerCase())
         innerDiv.appendChild(birthdayContent);
     });
-    parseJsonAndInsertCell(JSON)
+    data && parseJsonAndInsertCell(data)
 }
 
 function parseJsonAndInsertCell(data) {
-    data.map((item => {
-        let day = new Date(item.birthday).getDay();
-        if (day || day === 0) {
-            let birthdayCell = document.createElement("div");
-            birthdayCell.setAttribute('class', 'birthdayCell')
-            birthdayCell.setAttribute("style", `background-color:${getRandomColor()}`);
-            let textContainer = document.createElement("p");
-            textContainer.setAttribute('class', 'initial')
-            let text = document.createTextNode(getInitials(item.name));
-            textContainer.appendChild(text);
-            birthdayCell.appendChild(textContainer)
-            document.getElementById(WEEK_DAYS_MAPPING[day]?.toLowerCase()).appendChild(birthdayCell)
-        }
-    }));
-    calculateStyles()
+    if (Array.isArray(data) && data.length > 0) {
+        data.map((item => {
+            let birthdayArray = item.birthday?.split('/');
+            birthdayArray[2] = year
+            let birthday = birthdayArray.join('/')
+            let day = new Date(birthday).getDay();
+            console.log('dd', birthday)
+            if (day || day === 0) {
+                let birthdayCell = document.createElement("div");
+                birthdayCell.setAttribute('class', 'birthdayCell')
+                birthdayCell.setAttribute("style", `background-color:${getRandomColor()}`);
+                let textContainer = document.createElement("p");
+                textContainer.setAttribute('class', 'initial')
+                let text = document.createTextNode(getInitials(item.name));
+                textContainer.appendChild(text);
+                birthdayCell.appendChild(textContainer)
+                document.getElementById(WEEK_DAYS_MAPPING[day]?.toLowerCase()).appendChild(birthdayCell)
+            }
+        }));
+        calculateStyles()
+    } else {
+        return alert('Empty data')
+    }
 }
 
 function calculateStyles() {
@@ -269,7 +280,7 @@ function nearestPower(n) {
 }
 
 function getRandomColor() {
-    let letters = 'ABCDE'.split('');
+    let letters = 'ABDC'.split('');
     let color = '#';
     for (let i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * letters.length)];
@@ -278,6 +289,42 @@ function getRandomColor() {
 }
 
 function getInitials(name) {
-    return name.match(/\b\w/g)?.join(' ')
+    let nameArray = name.match(/\b\w/g);
+    if (nameArray && nameArray?.length >= 3)
+        return nameArray[0] + nameArray[2];
+    else
+        return nameArray.join(' ')
 
+}
+
+function updateUi() {
+    cleanDom();
+    init(JSON_DATA)
+}
+
+function cleanDom() {
+    document.getElementById("container").innerHTML = ''
+
+
+}
+
+function onChangeTextArea(data) {
+    if (IsJsonString(data))
+        JSON_DATA = JSON.parse(JSON.parse(JSON.stringify(data)))
+    else
+        alert('Invalid data format')
+}
+
+function onChangeInput(value) {
+    year = value
+}
+
+
+function IsJsonString(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
 }
