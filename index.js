@@ -165,7 +165,6 @@ function init(data) {
         headingDiv.appendChild(textContainer);
         document.getElementById("container").appendChild(div);
 
-
         let birthdayContent = document.createElement('div');
         birthdayContent.setAttribute('class', 'birthdayCardsContainer')
         birthdayContent.setAttribute('id', item.toLowerCase())
@@ -218,7 +217,13 @@ function calculateStyles() {
                 }
                 break;
             case 4:
-                return dayElement.classList.add('percent25');
+                dayElement.classList.add('percent25');
+                if (birthdayCountsPerDay <= 12) {
+                    let placeholderDiv = document.createElement("div");
+                    placeholderDiv.setAttribute('class', 'placeholder');
+                    dayElement.appendChild(placeholderDiv)
+                }
+                break;
             default:
                 return dayElement.classList.add('percent25')
         }
