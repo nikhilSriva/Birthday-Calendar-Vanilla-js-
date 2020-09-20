@@ -181,7 +181,6 @@ function parseJsonAndInsertCell(data) {
             birthdayArray[2] = year
             let birthday = birthdayArray.join('/')
             let day = new Date(birthday).getDay();
-            console.log('dd', birthday)
             if (day || day === 0) {
                 let birthdayCell = document.createElement("div");
                 birthdayCell.setAttribute('class', 'birthdayCell')
@@ -225,7 +224,7 @@ function calculateStyles() {
         }
 
     })
-    // document.getElementById('yearInputId').value = '';
+    document.getElementById('yearInputId').value = '';
     year = null
 }
 
@@ -239,7 +238,7 @@ function nearestPower(n) {
 }
 
 function getRandomColor() {
-    let letters = 'ABDC'.split('');
+    let letters = 'ABDCDE'.split('');
     let color = '#';
     for (let i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * letters.length)];
