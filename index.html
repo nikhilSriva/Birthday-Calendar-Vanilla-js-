@@ -13,7 +13,133 @@
         'SAT',
         'SUN'
     ];
-    const cards = [1, 2, 3, 4, 5]
+    const WEEK_DAYS_MAPPING = {
+        0: 'SUN',
+        1: 'MON',
+        2: 'TUE',
+        3: 'WED',
+        4: 'THU',
+        5: 'FRI',
+        6: 'SAT'
+    };
+    const JSON = [
+        {
+            name: "Tyrion Lannister",
+            birthday: "12//1978"
+        },
+        {
+            name: "Cersei Lannister",
+            birthday: "11/30/1975"
+        },
+        {
+            name: "Daenerys Targaryen",
+            birthday: "11/24/1991"
+        },
+        {
+            name: "Arya Stark",
+            birthday: "11/25/1996"
+        },
+        {
+            name: "Jon Snow",
+            birthday: "12/03/1989"
+        },
+        {
+            name: "Sansa Stark",
+            birthday: "15/08/1992"
+        },
+        {
+            name: "Jorah Mormont",
+            birthday: "12/16/1968"
+        },
+        {
+            name: "Jaime Lannister",
+            birthday: "12/06/1975"
+        },
+        {
+            name: "Sandor Clegane",
+            birthday: "11/07/1969"
+        },
+        {
+            name: "Tywin Lannister",
+            birthday: "10/12/1951"
+        },
+        {
+            name: "Theon Greyjoy",
+            birthday: "12/31/1989"
+        },
+        {
+            name: "Samwell Tarly",
+            birthday: "12/07/1990"
+        },
+        {
+            name: "Joffrey Baratheon",
+            birthday: "06/12/1992"
+        },
+        {
+            name: "Catelyn Stark",
+            birthday: "12/03/1962"
+        },
+        {
+            name: "Bran Stark",
+            birthday: "12/02/1995"
+        },
+        {
+            name: "Petyr Baelish",
+            birthday: "11/20/1974"
+        },
+        {
+            name: "Robb Stark",
+            birthday: "11/28/1986"
+        },
+        {
+            name: "Brienne of Tarth",
+            birthday: "11/27/1985"
+        },
+        {
+            name: "Margaery Tyrell",
+            birthday: "12/02/1989"
+        },
+        {
+            name: "Stannis Baratheon",
+            birthday: "09/14/1971"
+        },
+        {
+            name: "Davos Seaworth",
+            birthday: "02/13/1973"
+        },
+        {
+            name: "Tormund Giantsbane",
+            birthday: "12/14/1974"
+        },
+        {
+            name: "Jeor Mormont",
+            birthday: "11/01/1955"
+        },
+        {
+            name: "Eddard Stark",
+            birthday: "12/02/1963"
+        },
+        {
+            name: "Khal Drogo",
+            birthday: "12/05/1980"
+        },
+        {
+            name: "Ramsay Bolton",
+            birthday: "12/05/1976"
+        },
+        {
+            name: "Robert Baratheon",
+            birthday: "12/02/1965"
+        },
+        {
+            name: "Daario Naharis",
+            birthday: "12/02/1985"
+        },
+        {
+            name: "Viserys Targaryen",
+            birthday: "12/06/1984"
+        }
+    ]
 
     function f() {
         WEEK_DAYS.map((item, index) => {
@@ -21,12 +147,13 @@
             div.setAttribute("style", "padding:10px;flex-basis:14%");
 
             let innerDiv = document.createElement("div");
+            innerDiv.setAttribute('class', 'innerDiv')
+
             div.appendChild(innerDiv)
-            innerDiv.setAttribute("style", "background-color:white;height:30vh;display:flex;flex-direction:column");
-            innerDiv.setAttribute("id", `innerDiv_${index}`);
+            innerDiv.setAttribute("id", `innerDiv`);
 
             let headingDiv = document.createElement("div");
-            headingDiv.setAttribute("style", "background-color:#a99fe8;height:30px;text-align:right;padding:12px 10px 0 10px;border-top-left-radius:9px;border-top-right-radius:9px");
+            headingDiv.setAttribute('class', 'headerContainer')
             innerDiv.appendChild(headingDiv);
 
             let textContainer = document.createElement("span");
@@ -36,17 +163,30 @@
             headingDiv.appendChild(textContainer);
             document.getElementById("container").appendChild(div);
 
-            cards.map(item => {
-                let contentDiv = document.createElement("div");
-                contentDiv.setAttribute("style", `flex-basis:20%;background-color:${getRandomColor()};margin:5px`);
-                document.getElementById(`innerDiv_${index}`).appendChild(contentDiv);
-            })
 
+            let birthdayContent = document.createElement('div');
+            birthdayContent.setAttribute('class', 'birthdayCardsContainer')
+            birthdayContent.setAttribute('id', item.toLowerCase())
+            innerDiv.appendChild(birthdayContent);
         })
+        parseJsonAndInsertCell(JSON)
     }
 
+    function parseJsonAndInsertCell(data) {
+        data.map((date => {
+            let day = new Date(date.birthday).getDay();
+            if (day) {
+                let birthdayCell = document.createElement("div");
+                birthdayCell.setAttribute('class', 'birthdayCell')
+                birthdayCell.setAttribute("style", `background-color:${getRandomColor()}`);
+                document.getElementById(WEEK_DAYS_MAPPING[day]?.toLowerCase()).appendChild(birthdayCell)
+            }
+        }));
+    }
+
+
     function getRandomColor() {
-        let letters = 'BCDEF'.split('');
+        let letters = 'ABCDEF'.split('');
         let color = '#';
         for (let i = 0; i < 6; i++) {
             color += letters[Math.floor(Math.random() * letters.length)];
