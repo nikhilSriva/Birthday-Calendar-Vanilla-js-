@@ -43,7 +43,7 @@ const dummyData = [
     },
     {
         "name": "Sansa Stark",
-        "birthday": "15/08/1992"
+        "birthday": "08/15/1992"
     },
     {
         "name": "Jorah Mormont",
@@ -145,7 +145,7 @@ let JSON_DATA = null,
 function init(data) {
     WEEK_DAYS.map((item, index) => {
         let div = document.createElement("div");
-        div.setAttribute("style", "flex-basis:12%");
+        div.setAttribute('class', 'cardContainer')
 
         let innerDiv = document.createElement("div");
         innerDiv.setAttribute('class', 'innerDiv')
@@ -177,7 +177,7 @@ function parseJsonAndInsertCell(data) {
     if (Array.isArray(data) && data.length > 0) {
         data.map((item => {
             let birthdayArray = item.birthday?.split('/');
-            birthdayArray[2] = year
+            birthdayArray[2] = year;
             let birthday = birthdayArray.join('/')
             let day = new Date(birthday).getDay();
             if (day || day === 0) {
@@ -229,8 +229,8 @@ function calculateStyles() {
         }
 
     })
-    document.getElementById('yearInputId').value = '';
-    year = null
+    // document.getElementById('yearInputId').value = '';
+    // year = null
 }
 
 function nearestPower(n) {
@@ -273,7 +273,14 @@ function cleanDom() {
 
 function onChangeTextArea(data) {
     if (IsJsonString(data))
-        JSON_DATA = JSON.parse(JSON.parse(JSON.stringify(data)))
+        try {
+            JSON_DATA = JSON.parse(JSON.parse(JSON.stringify(data))).sort(function (a, b) {
+                return new Date(a.birthday).getTime() - new Date(b.birthday).getTime()
+
+            })
+        } catch (e) {
+            alert('Invalid data format')
+        }
     else
         alert('Invalid data format')
 }
@@ -289,7 +296,6 @@ function onInputKeyPress(e) {
     if (e.keyCode === 13)
         updateUi()
 }
-
 
 function IsJsonString(str) {
     try {
