@@ -11,29 +11,50 @@
         'FRI',
         'SAT',
         'SUN'
-    ]
+    ];
+    const cards = [1, 2, 3, 4, 5]
 
     function f() {
-        WEEK_DAYS.map(item => {
-            let div = document.createElement("div");                 // Create a <li> node
-            div.setAttribute("style", "padding:10px;background-color:green;flex-basis:14%");
+        WEEK_DAYS.map((item, index) => {
+            let div = document.createElement("div");
+            div.setAttribute("style", "padding:10px;flex-basis:14%");
 
             let innerDiv = document.createElement("div");
             div.appendChild(innerDiv)
-            innerDiv.setAttribute("style", "background-color:red;height:30vh");
+            innerDiv.setAttribute("style", "background-color:white;height:30vh;display:flex;flex-direction:column");
+            innerDiv.setAttribute("id", `innerDiv_${index}`);
 
             let headingDiv = document.createElement("div");
-            headingDiv.setAttribute("style", "background-color:#a99fe8;height:30px;text-align:right;padding:12px 10px 0 10px;border-radius:5px");
-            innerDiv.appendChild(headingDiv)
+            headingDiv.setAttribute("style", "background-color:#a99fe8;height:30px;text-align:right;padding:12px 10px 0 10px;border-top-left-radius:9px;border-top-right-radius:9px");
+            innerDiv.appendChild(headingDiv);
 
-            let textnode = document.createTextNode(item);
-            headingDiv.appendChild(textnode);
+            let textContainer = document.createElement("span");
+            let text = document.createTextNode(item);
+            textContainer.appendChild(text);
+            textContainer.style.color = '#dfdbf9';
+            headingDiv.appendChild(textContainer);
             document.getElementById("container").appendChild(div);
+
+            cards.map(item => {
+                let contentDiv = document.createElement("div");
+                contentDiv.setAttribute("style", `flex-basis:20%;background-color:${getRandomColor()};margin:5px`);
+                document.getElementById(`innerDiv_${index}`).appendChild(contentDiv);
+            })
+
         })
+    }
+
+    function getRandomColor() {
+        let letters = 'BCDEF'.split('');
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * letters.length)];
+        }
+        return color;
     }
 </script>
 <body onload="f()">
-<div id="root" style="width: 100%;height: 100%;background-color: brown">
+<div id="root" style="width: 100%;height: 100%;background-color: #ebf0f2">
     <div id="container" style="flex-direction: row;display: flex">
 
     </div>
