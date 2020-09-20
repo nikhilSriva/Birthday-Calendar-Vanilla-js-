@@ -18,50 +18,6 @@ const WEEK_DAYS_MAPPING = {
 };
 const dummyData = [
     {
-        "name": "Tyrion Lannister",
-        "birthday": "12/08/1978"
-    },
-    {
-        "name": "Tyriaaon Lannister",
-        "birthday": "09/20/2020"
-    },
-    {
-        "name": "Tyriaaon Lannister",
-        "birthday": "09/20/2020"
-    }, {
-        "name": "Tyriaaon Lannister",
-        "birthday": "09/20/2020"
-    }, {
-        "name": "Tyriaaon Lannister",
-        "birthday": "09/20/2020"
-    },
-    {
-        "name": "Tyriaaon Lannister",
-        "birthday": "09/20/2020"
-    },
-    {
-        "name": "Tyriaaon Lannister",
-        "birthday": "09/20/2020"
-    }, {
-        "name": "Tyriaaon Lannister",
-        "birthday": "09/20/2020"
-    }, {
-        "name": "Tyriaaon Lannister",
-        "birthday": "09/20/2020"
-    }, {
-        "name": "Tyriaaon Lannister",
-        "birthday": "09/20/2020"
-    }, {
-        "name": "Tyriaaon Lannister",
-        "birthday": "09/20/2020"
-    }, {
-        "name": "Tyriaaon Lannister",
-        "birthday": "09/20/2020"
-    },
-    {
-        "name": "Tyriaaon Lannister",
-        "birthday": "09/20/2020"
-    }, {
         "name": "Tyriaaon Lannister",
         "birthday": "09/20/2020"
     },
@@ -183,7 +139,8 @@ const dummyData = [
     }
 ]
 let JSON_DATA = null,
-    year = null;
+    year = null,
+    yearRegex = new RegExp('^[0-9]{4}$')
 
 function init(data) {
     WEEK_DAYS.map((item, index) => {
@@ -268,6 +225,8 @@ function calculateStyles() {
         }
 
     })
+    // document.getElementById('yearInputId').value = '';
+    year = null
 }
 
 function nearestPower(n) {
@@ -298,14 +257,14 @@ function getInitials(name) {
 }
 
 function updateUi() {
-    cleanDom();
-    init(JSON_DATA)
+    if (year) {
+        cleanDom();
+        init(JSON_DATA)
+    }
 }
 
 function cleanDom() {
-    document.getElementById("container").innerHTML = ''
-
-
+    document.getElementById("container").innerHTML = '';
 }
 
 function onChangeTextArea(data) {
@@ -316,7 +275,15 @@ function onChangeTextArea(data) {
 }
 
 function onChangeInput(value) {
-    year = value
+    if (yearRegex.test(value))
+        year = value
+    else
+        alert('Invalid year')
+}
+
+function onInputKeyPress(e) {
+    if (e.keyCode === 13)
+        updateUi()
 }
 
 
