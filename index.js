@@ -143,6 +143,7 @@ let JSON_DATA = null,
     yearRegex = new RegExp('^[0-9]{4}$')
 
 function init(data) {
+    //create the Week Days square container structure, initially
     WEEK_DAYS.map((item, index) => {
         let div = document.createElement("div");
         div.setAttribute('class', 'cardContainer')
@@ -174,8 +175,10 @@ function init(data) {
 }
 
 function parseJsonAndInsertCell(data) {
+    //insert Birthday Squares in each of the Week Days squares
     if (Array.isArray(data) && data.length > 0) {
         data.map((item => {
+            //replace the input year with the existing date's year and then check its week day, as in where it lies
             let birthdayArray = item.birthday?.split('/');
             birthdayArray[2] = year;
             let birthday = birthdayArray.join('/')
@@ -199,6 +202,21 @@ function parseJsonAndInsertCell(data) {
 }
 
 function calculateStyles() {
+    /**
+     * nearestPower() gives the number whose square is more than the number of birthdays, so that we can categorise it;
+     *  Example:
+     *          if 5 birthdays, then output is 3. Every square should take up 33%.
+     *          if 1 birthday, then output is 1. Every square should take up 100%.
+     *          and so on...
+     *
+     * calculate the styles to apply as in:
+     *  if 1 birthday? then 100% width
+     *  if 2 birthday? then 50% width
+     *  if 3 birthday? then 33.33% width
+     *  if 4 birthday? then 25% width
+     *
+     */
+
     WEEK_DAYS.map(day => {
         let dayElement = document.getElementById(day?.toLowerCase())
         let birthdayCountsPerDay = dayElement.childElementCount;
@@ -209,7 +227,7 @@ function calculateStyles() {
                 return dayElement.classList.add('percent50');
             case 3:
                 dayElement.classList.add('percent33');
-                //create a extra row to maintain sanity of row
+                //create an extra row to maintain sanity of row
                 if (birthdayCountsPerDay <= 6) {
                     let placeholderDiv = document.createElement("div");
                     placeholderDiv.setAttribute('class', 'placeholder');
@@ -218,6 +236,7 @@ function calculateStyles() {
                 break;
             case 4:
                 dayElement.classList.add('percent25');
+                //create an extra row to maintain sanity of row
                 if (birthdayCountsPerDay <= 12) {
                     let placeholderDiv = document.createElement("div");
                     placeholderDiv.setAttribute('class', 'placeholder');
@@ -252,6 +271,7 @@ function getRandomColor() {
 }
 
 function getInitials(name) {
+    //get initials of a name (ex: Nikhil Srivastava)| output: N S
     let nameArray = name.match(/\b\w/g);
     if (nameArray && nameArray?.length >= 3)
         return nameArray[0] + nameArray[2];
@@ -268,12 +288,14 @@ function updateUi() {
 }
 
 function cleanDom() {
+    //delete the created nodes
     document.getElementById("container").innerHTML = '';
 }
 
 function onChangeTextArea(data) {
     if (IsJsonString(data))
         try {
+            //parse the JSON and sort by age increasing order
             JSON_DATA = JSON.parse(JSON.parse(JSON.stringify(data))).sort(function (a, b) {
                 return new Date(a.birthday).getTime() - new Date(b.birthday).getTime()
 
@@ -286,6 +308,7 @@ function onChangeTextArea(data) {
 }
 
 function onChangeInput(value) {
+    //check if input year is in proper format
     if (yearRegex.test(value))
         year = value
     else
@@ -293,11 +316,13 @@ function onChangeInput(value) {
 }
 
 function onInputKeyPress(e) {
+    //check if enter key is pressed, then update the UI
     if (e.keyCode === 13)
         updateUi()
 }
 
 function IsJsonString(str) {
+    //check if the input json is in proper stringified format
     try {
         JSON.parse(str);
     } catch (e) {
